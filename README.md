@@ -17,24 +17,47 @@ With `arkade get`, you'll have `kubectl`, `kind`, `terraform`, and `jq` on your 
 
 With over 120 CLIs and 55 Kubernetes apps (charts, manifests, installers) available for Kubernetes, gone are the days of contending with dozens of README files just to set up a development stack with the usual suspects like ingress-nginx, Postgres and cert-manager.
 
-- [arkade - The Open Source Kubernetes Marketplace](#arkade---the-open-source-kubernetes-marketplace)
-  - [Help fund arkade](#help-fund-arkade-)
+- [arkade - Open Source Marketplace For Developer Tools](#arkade---open-source-marketplace-for-developer-tools)
+  - [Support arkade 👋](#support-arkade-)
   - [Should you try arkade?](#should-you-try-arkade)
   - [Getting arkade](#getting-arkade)
   - [Usage overview](#usage-overview)
   - [Download CLI tools with arkade](#download-cli-tools-with-arkade)
+  - [Install System Packages](#install-system-packages)
   - [Install CLIs during CI with GitHub Actions](#install-clis-during-ci-with-github-actions)
   - [Verify and upgrade images in Helm charts](#verify-and-upgrade-images-in-helm-charts)
-  - [Install System Packages](#install-system-packages)
+    - [Upgrade images within a Helm chart](#upgrade-images-within-a-helm-chart)
+  - [Verify images within a helm chart](#verify-images-within-a-helm-chart)
   - [Installing apps with arkade](#installing-apps-with-arkade)
-  - [Community & contributing](#community--contributing)
+    - [Create a Kubernetes cluster](#create-a-kubernetes-cluster)
+    - [Install a Kubernetes app](#install-a-kubernetes-app)
+    - [Uninstall an app](#uninstall-an-app)
+    - [Reduce the repetition](#reduce-the-repetition)
+    - [Say goodbye to values.yaml and hello to flags](#say-goodbye-to-valuesyaml-and-hello-to-flags)
+    - [Override with `--set`](#override-with---set)
+    - [Compounding apps](#compounding-apps)
+      - [Get a self-hosted TLS registry with authentication](#get-a-self-hosted-tls-registry-with-authentication)
+      - [Get a public IP for a private cluster and your IngressController](#get-a-public-ip-for-a-private-cluster-and-your-ingresscontroller)
+    - [Explore the apps](#explore-the-apps)
+  - [Community \& contributing](#community--contributing)
+    - [Tutorials \& community blog posts](#tutorials--community-blog-posts)
+      - [Watch a video walk-through by Alex Ellis](#watch-a-video-walk-through-by-alex-ellis)
+      - [Featured tutorials](#featured-tutorials)
+      - [Official blog posts](#official-blog-posts)
+      - [Community posts](#community-posts)
+    - [Suggest a new app](#suggest-a-new-app)
   - [Sponsored apps](#sponsored-apps)
   - [FAQ](#faq)
-
-  See also:
-
-- [Catalog of CLI tools](#catalog-of-clis)
-- [Catalog of Kubernetes apps](#catalog-of-apps)
+    - [How does `arkade` compare to `helm`?](#how-does-arkade-compare-to-helm)
+    - [Is arkade suitable for production use?](#is-arkade-suitable-for-production-use)
+    - [What is in scope for `arkade get`?](#what-is-in-scope-for-arkade-get)
+    - [Automatic download of tools](#automatic-download-of-tools)
+    - [Improving the code or fixing an issue](#improving-the-code-or-fixing-an-issue)
+    - [Join us on Slack](#join-us-on-slack)
+    - [License](#license)
+  - [Catalog of apps and CLIs](#catalog-of-apps-and-clis)
+    - [Catalog of Apps](#catalog-of-apps)
+    - [Catalog of CLIs](#catalog-of-clis)
 
 ## Support arkade 👋
 
@@ -744,6 +767,7 @@ There are 56 apps that you can install on your cluster.
 | [grype](https://github.com/anchore/grype)                                    | A vulnerability scanner for container images and filesystems                                                                              |
 | [hadolint](https://github.com/hadolint/hadolint)                             | A smarter Dockerfile linter that helps you build best practice Docker images                                                              |
 | [helm](https://github.com/helm/helm)                                         | The Kubernetes Package Manager: Think of it like apt/yum/homebrew for Kubernetes.                                                         |
+| [helm-docs](https://github.com/norwoodj/helm-docs)                           | A tool to auto-generate documentation from helm charts into markdown  files.                                                       |
 | [helmfile](https://github.com/helmfile/helmfile)                             | Deploy Kubernetes Helm Charts                                                                                                             |
 | [hey](https://github.com/alexellis/hey)                                      | Load testing tool                                                                                                                         |
 | [hostctl](https://github.com/guumaster/hostctl)                              | Dev tool to manage /etc/hosts like a pro!                                                                                                 |

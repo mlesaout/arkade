@@ -81,6 +81,27 @@ https://get.helm.sh/helm-{{.Version}}-{{$os}}-{{$arch}}.{{$ext}}`,
 
 	tools = append(tools,
 		Tool{
+			Owner:       "norwoodj",
+			Repo:        "helm-docs",
+			Name:        "helm-docs",
+			Description: "Auto-generates documentation from helm charts into markdown files.",
+			BinaryTemplate: `{{$arch := ""}}
+							{{- if eq .Arch "x86_64" -}}
+							{{$arch = "x86_64"}}
+							{{- else if or (eq .Arch "aarch64") (eq .Arch "arm64") -}}
+							{{$arch = "arm64"}}
+							{{- end -}}
+	
+							{{$os := .OS}}
+							{{ if HasPrefix .OS "ming" -}}
+							{{$os = "Windows"}}
+							{{- end -}}
+	
+						{{.Name}}_{{.VersionNumber}}_{{$os}}_{{$arch}}.tar.gz`,
+		})
+
+	tools = append(tools,
+		Tool{
 			Owner:       "helmfile",
 			Repo:        "helmfile",
 			Name:        "helmfile",

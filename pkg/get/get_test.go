@@ -1519,6 +1519,43 @@ func Test_DownloadDockerCompose(t *testing.T) {
 	}
 }
 
+func Test_DownloadHelmDocs(t *testing.T) {
+	tools := MakeTools()
+	name := "helm-docs"
+
+	tool := getTool(name, tools)
+
+	const toolVersion = "v1.11.0"
+
+	tests := []test{
+		{os: "ming",
+			arch:    arch64bit,
+			version: toolVersion,
+			url:     `https://github.com/norwoodj/helm-docs/releases/download/v1.11.0/helm-docs_1.11.0_Windows_x86_64.tar.gz`,
+		},
+		{os: "linux",
+			arch:    arch64bit,
+			version: toolVersion,
+			url:     `https://github.com/norwoodj/helm-docs/releases/download/v1.11.0/helm-docs_1.11.0_linux_x86_64.tar.gz`,
+		},
+		{os: "darwin",
+			arch:    archDarwinARM64,
+			version: toolVersion,
+			url:     `https://github.com/norwoodj/helm-docs/releases/download/v1.11.0/helm-docs_1.11.0_darwin_arm64.tar.gz`,
+		},
+	}
+
+	for _, tc := range tests {
+		got, err := tool.GetURL(tc.os, tc.arch, tc.version, false)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if got != tc.url {
+			t.Errorf("want: %s, got: %s", tc.url, got)
+		}
+	}
+}
+
 func Test_DownloadHelmfile(t *testing.T) {
 	tools := MakeTools()
 	name := "helmfile"
